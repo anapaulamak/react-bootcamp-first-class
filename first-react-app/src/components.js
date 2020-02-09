@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PRODUCTS } from './mock';
+import './components.styled.css';
 
 export class FilterableProductTable extends Component{
   constructor(props){
@@ -25,7 +26,8 @@ export class FilterableProductTable extends Component{
   }
   render(){
     return(
-      <div>
+      <div className="Container">
+        <h1>Products List</h1>
         <SearchBar
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
@@ -55,8 +57,9 @@ export class SearchBar extends Component {
   render(){
     
     return(
-      <form>
+      <form className="SearchBar">
         <input
+          className="InputSearch"
           type="text"
           placeholder="Seach..."
           value={this.props.filterText}
@@ -123,9 +126,9 @@ const ProductTable = (props) =>{
 const ProductRow = (props) => {
   const product = props.product;
   return(
-    <tr>
+    <tr className="ProductRow">
       {!product.stocked ? 
-        <td style={{color: 'red'}}>{product.name}</td> :
+        <td style={{color: '#fd7979'}}>{product.name}</td> :
         <td>{product.name}</td>
       }
       <td>{product.price}</td>
@@ -136,7 +139,7 @@ const ProductRow = (props) => {
 const ProductCategoryRow = (props) => {
   const product = props.product;
   return(
-    <tr>
+    <tr className="ProductCategoryRow">
       <th colSpan='2'>{product.category}</th>
     </tr>
   )
