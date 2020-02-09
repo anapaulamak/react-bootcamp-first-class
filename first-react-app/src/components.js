@@ -73,53 +73,51 @@ export class SearchBar extends Component {
   }
 }
 
-export class ProductTable extends Component{
-  render(){
-    const filterText = this.props.filterText;
-    const inStockOnly = this.props.inStockOnly;
+const ProductTable = (props) =>{
+  const filterText = props.filterText;
+  const inStockOnly = props.inStockOnly;
 
-    const rows = [];
-    let lastCategory = null;
+  const rows = [];
+  let lastCategory = null;
 
-    this.props.products.forEach((product) => {
-      if(product.name.indexOf(filterText) === -1){
-        return;
-      }
-      if(inStockOnly && !product.stocked){
-        return;
-      }
-      if(product.category !== lastCategory) {
-        rows.push(
-          <ProductCategoryRow
-            product={product}
-            key={product.category}
-          />
-        );
-      }
+  props.products.forEach((product) => {
+    if(product.name.indexOf(filterText) === -1){
+      return;
+    }
+    if(inStockOnly && !product.stocked){
+      return;
+    }
+    if(product.category !== lastCategory) {
       rows.push(
-        <ProductRow
+        <ProductCategoryRow
           product={product}
-          key={product.name}
+          key={product.category}
         />
       );
-      lastCategory = product.category;
-    });
+    }
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name}
+      />
+    );
+    lastCategory = product.category;
+  });
 
-    return(
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Preço</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-    )
-  }
+  return(
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        {rows}
+      </tbody>
+    </table>
+  )
 }
 
 const ProductRow = (props) => {
