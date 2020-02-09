@@ -108,7 +108,7 @@ const ProductTable = (props) =>{
   });
 
   return(
-    <table>
+    <table className="ProductTable">
       <thead>
         <tr>
           <th>Nome</th>
