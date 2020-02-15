@@ -10,7 +10,7 @@ export class RegisterForm extends Component{
     return(
       <form>
       <InputForm />
-      <SubmitButton />
+      <SubmitButton butt/>
     </form>
     )
   }
