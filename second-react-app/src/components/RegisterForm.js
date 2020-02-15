@@ -8,45 +8,58 @@ export class RegisterForm extends Component{
     this.state = {
       inputValue: '',
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(inputValue){
+    this.setState({
+      inputValue: inputValue
+    })
   }
 
   render(){
     const labels = [ 
       {
-        label: 'nome completo',
+        name: 'nome completo',
         type: 'text',
       },
       {
-        label: 'cidade',
+        name: 'cidade',
         type: 'text', 
       },
       {
-        label: 'email',
+        name: 'email',
         type: 'email',
         placeholder: 'email@email.com'
       },
       {
-        label: 'cpf',
+        name: 'cpf',
         type: 'number',
         placeholder: '000.000.000-00'
       }, 
       {
-        label: 'telefone',
+        name: 'telefone',
         type: 'number',
         placeholder: '(XX)XXXXX-XXXX'
       }, 
     ]
+    console.log(this.state.inputValue);
     return(
       <form>
+
         {labels.map((label, index) => {
           return(
             <InputForm 
-            inputLabelText={label.label} type={label.type} placeholder={label.placeholder}/>
+              name={label.name}
+              type={label.type}
+              placeholder={label.placeholder}
+              onChange={this.handleChange}
+            />
             )
           })
         }
 
-        <SubmitButton buttonText="Inscrever"/>
+        <SubmitButton buttonText="Inscrever" onClick={this}/>
       </form>
     )
   }

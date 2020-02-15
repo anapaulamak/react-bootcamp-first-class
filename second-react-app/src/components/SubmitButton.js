@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export class SubmitButton extends Component{
   render(){
     return(
-      <button onSubmit={this.props.onSubmit}>{this.props.buttonText}</button>
+      <button onClick={this.props.onClick}>{this.props.buttonText}</button>
     )
   }
 }
