@@ -4,8 +4,8 @@ export class InputForm extends Component{
   render(){
     return(
       <div>
-        <label>{this.props.inputLabel}</label>
-        <input value={this.props.inputLabel}></input>
+        <p>{this.props.inputLabelText}</p>
+        <input value={this.props.value} type={this.props.type} placeholder={this.props.placeholder} />
       </div>
     )
   }
