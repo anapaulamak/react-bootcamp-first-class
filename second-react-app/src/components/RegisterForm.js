@@ -19,7 +19,7 @@ export class RegisterForm extends Component{
     this.setState({ [name]: value });
   }
   
-  handleSubmitForm = e => {
+  handleSubmitForm = event => {
     event.preventDefault();
     console.log(this.state)
   };
@@ -46,14 +46,14 @@ export class RegisterForm extends Component{
       {
         label: 'Cpf',
         name: 'cpf',
-        type: 'number',
         placeholder: '000.000.000-00',
+        mask: "999.999.999-99"
       }, 
       {
         label: 'Telefone',
         name: 'telefone',
-        type: 'number',
         placeholder: '(XX)XXXXX-XXXX',
+        mask: "(99)99999-9999"
       }, 
     ]
 
@@ -64,16 +64,16 @@ export class RegisterForm extends Component{
             <InputForm
               label={label.label}
               name={label.name}
-              type={label.type}
               placeholder={label.placeholder}
               onChange={this.handleChange}
               value={this.state[label.name]}
+              mask={label.mask}
             />
             )
           })
         }
 
-        <SubmitButton buttonText="Inscrever" onClick={this.handleClick}/>
+        <SubmitButton buttonText="Inscrever"/>
       </form>
     )
   }

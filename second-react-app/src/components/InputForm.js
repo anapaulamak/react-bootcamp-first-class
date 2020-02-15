@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import InputMask from 'react-input-mask';
 
 export class InputForm extends Component{
   constructor(props){
@@ -11,12 +12,12 @@ export class InputForm extends Component{
     return(
       <div>
         <p>{this.props.label}</p>
-        <input
+        <InputMask
           name={this.props.name}
           value={this.props.value}
-          type={this.props.type}
           placeholder={this.props.placeholder}
           onChange={this.handleChange}
+          mask={this.props.mask}
         />
       </div>
     )
