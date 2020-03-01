@@ -5,7 +5,7 @@ export default class FormPage extends Component{
   render(){
     return(
       <div className="Container">
-        <label>Cadastro de Alunas</label>
+        <h1>Cadastro de Alunas</h1>
         <RegisterForm />
       </div>
     )

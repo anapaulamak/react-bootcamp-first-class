@@ -18,6 +18,7 @@ export class InputForm extends Component{
           placeholder={this.props.placeholder}
           onChange={this.handleChange}
           mask={this.props.mask}
+          required={this.props.required}
         />
       </div>
     )

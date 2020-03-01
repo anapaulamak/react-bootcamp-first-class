@@ -11,7 +11,7 @@ export class RegisterForm extends Component{
         email: '', 
         cpf: '',
         telefone: '',
-        displayWarning: false,
+        displayWarning: null,
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -26,6 +26,11 @@ export class RegisterForm extends Component{
     if (!name || !city || !email || !cpf || !phone) {
       this.setState({
         displayWarning: true
+      });
+    } 
+    if (name || city || email || cpf || phone) {
+      this.setState({
+        displayWarning: false
       });
     }
     console.log(this.state)
@@ -76,16 +81,20 @@ export class RegisterForm extends Component{
               onChange={this.handleChange}
               value={this.state[label.name]}
               mask={label.mask}
+              // required={true}
             />
             )
           })
         }
-        { displayWarning ? 
+        { displayWarning === true ? 
         <span style={{color: 'red'}}>Preencha todos os campos, por favor!</span>
         :
-        ''}
+        displayWarning === false ? 
+        <span style={{color: 'black'}}>Dados enviados com sucesso!</span>
+        :
+        <span></span>}
         <br />
-        <SubmitButton buttonText="Inscrever"/>
+        <SubmitButton buttonText="Inscrever" />
       </form>
     )
   }
