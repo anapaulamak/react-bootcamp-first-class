@@ -11,6 +11,7 @@ export class RegisterForm extends Component{
         email: '', 
         cpf: '',
         telefone: '',
+        displayWarning: false,
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,9 +22,14 @@ export class RegisterForm extends Component{
   
   handleSubmitForm = event => {
     event.preventDefault();
+    const { name, city, email, cpf, phone } = this.state;
+    if (!name || !city || !email || !cpf || !phone) {
+      this.setState({
+        displayWarning: true
+      });
+    }
     console.log(this.state)
   };
-
 
   render(){
     const labels = [ 
@@ -57,6 +63,8 @@ export class RegisterForm extends Component{
       }, 
     ]
 
+    const displayWarning = this.state.displayWarning;
+
     return(
       <form onSubmit={this.handleSubmitForm}>
         {labels.map((label, index) => {
@@ -72,7 +80,11 @@ export class RegisterForm extends Component{
             )
           })
         }
-
+        { displayWarning ? 
+        <span style={{color: 'red'}}>Preencha todos os campos, por favor!</span>
+        :
+        ''}
+        <br />
         <SubmitButton buttonText="Inscrever"/>
       </form>
     )
